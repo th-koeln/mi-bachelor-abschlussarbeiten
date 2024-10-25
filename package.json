@@ -1,0 +1,23 @@
+{
+  "name": "mi-bachelor-abschlussarbeiten",
+  "version": "1.0.0",
+  "description": "Abschlussarbeiten Medieninformatik Bachelor und Master",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "jekyll serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/th-koeln/mi-bachelor-abschlussarbeiten.git"
+  },
+  "author": "Volker Schaefer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/th-koeln/mi-bachelor-abschlussarbeiten/issues"
+  },
+  "homepage": "https://github.com/th-koeln/mi-bachelor-abschlussarbeiten#readme",
+  "dependencies": {
+    "jekyll": "^3.0.0-beta1"
+  }
+}

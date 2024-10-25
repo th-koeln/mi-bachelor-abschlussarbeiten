@@ -1,0 +1,9 @@
+services:
+  jekyll:
+    image: jekyll/jekyll:4           # Verwende das Jekyll-Image direkt, anstelle von `build`
+    working_dir: /app                # Setzt das Arbeitsverzeichnis auf /app
+    ports:
+      - "4000:4000"                  # Weiterleitung des Ports 4000
+    volumes:
+      - .:/app                       # Synchronisation des aktuellen Verzeichnisses mit /app im Container
+    command: jekyll serve --host 0.0.0.0  # Startet den Jekyll-Server

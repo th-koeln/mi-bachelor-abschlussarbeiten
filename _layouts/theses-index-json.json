@@ -1,0 +1,80 @@
+{% assign filter_category = page.category %}
+{% assign filtered_theses = site.theses %}
+{% if filter_category %}
+  {% assign filtered_theses = site.theses | where: "category", filter_category %}
+{% endif %}
+
+{
+  "thesis": [
+    {% for thesis in filtered_theses %}
+      {
+        "firstname": "{{ thesis.firstname }}",
+        "lastname": "{{ thesis.lastname }}",
+        "title": "{{ thesis.title }}",
+        "category": "{{ thesis.category }}",
+        "date": "{{ thesis.date }}",
+        "first_supervisor": "{{ thesis.first_supervisor }}",
+        "second_supervisor": "{{ thesis.second_supervisor }}",
+        {% if thesis.thesis_url %}
+          {% if thesis.thesis_url contains 'https://' %}
+            "thesis_url": "{{ thesis.thesis_url }}",
+          {% else %}
+            {% assign thesis_url = thesis.url %}
+            {% assign thesis_path_parts = thesis_url | split: '/' %}
+            {% assign thesis_new_path = thesis_url | remove: thesis_path_parts.last %}
+            "thesis_url": "{{ site.url }}{{ thesis_new_path }}{{ thesis.thesis_url }}",
+          {% endif %}
+
+        {% endif %}
+        {% if thesis.teaser_image_url %}
+          {% assign teaser_image_url = thesis.url %}
+          {% assign teaser_image_path_parts = teaser_image_url | split: '/' %}
+          {% assign teaser_image_new_path = teaser_image_url | remove: teaser_image_path_parts.last %}
+          "teaser_image_url": "{{ site.url }}{{ teaser_image_new_path }}{{ thesis.teaser_image_url }}",
+      {% endif %}
+        {% if thesis.keyword %}
+        "keywords": [
+          {% for keyword in thesis.keyword %}
+            "{{ keyword }}"{% if forloop.last == false %},{% endif %}
+          {% endfor %}
+        ],
+        {% endif %}
+        {% if thesis.cooperation_partner %}
+        "cooperation_partner": "{{ thesis.cooperation_partner }}",
+        {% endif %}
+        {% if thesis.cooperation_partner_url %}
+        "cooperation_partner_url": "{{ thesis.cooperation_partner_url }}",
+        {% endif %}
+        {% if thesis.repository_url %}
+        "repository_url": "{{ thesis.repository_url }}",
+        {% endif %}
+        {% if thesis.project_url %}
+        "project_url": "{{ thesis.project_url }}",
+        {% endif %}
+        {% if thesis.personal_website_url %}
+        "personal_website_url": "{{ thesis.personal_website_url }}",
+        {% endif %}
+        {% if thesis.personal_social_media_urls %}
+        "personal_social_media": [
+          {% assign valid_urls = thesis.personal_social_media_urls | where_exp: "url", "url contains 'facebook.com' or url contains 'linkedin.com' or url contains 'instagram.com' or url contains 'xing.com' or url contains 'twitter.com' or url contains 'x.com'" %}
+          {% for url in valid_urls %}
+            {% if url contains "facebook.com" %}
+              { "platform": "Facebook", "url": "{{ url }}" }
+            {% elsif url contains "linkedin.com" %}
+              { "platform": "LinkedIn", "url": "{{ url }}" }
+            {% elsif url contains "instagram.com" %}
+              { "platform": "Instagram", "url": "{{ url }}" }
+            {% elsif url contains "xing.com" %}
+              { "platform": "Xing", "url": "{{ url }}" }
+            {% elsif url contains "twitter.com" or url contains "x.com" %}
+              { "platform": "X", "url": "{{ url }}" }
+            {% endif %}
+            {% if forloop.last == false %},{% endif %}
+          {% endfor %}
+        ],
+        {% endif %}      
+        "abstract": "{{ thesis.content | strip_html | strip_newlines }}"
+      }{% if forloop.last == false %},{% endif %}
+    {% endfor %}
+  ]
+}
