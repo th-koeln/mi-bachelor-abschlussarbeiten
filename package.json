@@ -19,5 +19,8 @@
   "homepage": "https://github.com/th-koeln/mi-bachelor-abschlussarbeiten#readme",
   "dependencies": {
     "jekyll": "^3.0.0-beta1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.14"
   }
 }
