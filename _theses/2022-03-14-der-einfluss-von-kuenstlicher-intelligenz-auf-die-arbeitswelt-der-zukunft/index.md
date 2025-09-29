@@ -8,7 +8,7 @@ first_supervisor: "Prof. Dr. Thomas Riechert"
 second_supervisor: "Dr. Harald Nitz"
 teaser_image_url: "teaser-image.jpg"
 thesis_url: "f04_ba_bwl_anmeldung_der_bachelorarbeit.pdf"
-keyword:
+keywords:
   - "Künstliche Intelligenz"
   - "Arbeitswelt"
   - "Zukunft"
