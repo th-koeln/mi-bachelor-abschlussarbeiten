@@ -7,6 +7,7 @@ date: 14-03-2022
 first_supervisor: "Prof. Dr. Thomas Riechert"
 second_supervisor: "Dr. Harald Nitz"
 teaser_image_url: "teaser-image.jpg"
+teaser_image_copyright: "Photo by Leonardo AI"
 thesis_url: "f04_ba_bwl_anmeldung_der_bachelorarbeit.pdf"
 keywords:
   - "Künstliche Intelligenz"
