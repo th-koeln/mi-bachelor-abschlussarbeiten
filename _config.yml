@@ -30,8 +30,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 # theme: minima
-plugins:
-  - jekyll-feed
+plugins: []
 
 # Exclude from processing.
 # The following items will not be processed, by default.
@@ -41,7 +40,7 @@ plugins:
 # Excluded items can be processed by explicitly listing the directories or
 # their entries' file path in the `include:` list.
 #
-# exclude:
+exclude:
 #   - .sass-cache/
 #   - .jekyll-cache/
 #   - gemfiles/
@@ -52,7 +51,19 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - postcss.config.js
 
 collections:
   theses:
     output: true
+    
+# Default layouts for collections
+defaults:
+  - scope:
+      path: ""
+      type: "theses"
+    values:
+      layout: "thesis"
