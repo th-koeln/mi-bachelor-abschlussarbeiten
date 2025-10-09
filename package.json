@@ -4,8 +4,11 @@
   "description": "Abschlussarbeiten Medieninformatik Bachelor und Master",
   "main": "index.html",
   "scripts": {
+    "jekyll:serve": "bundle exec jekyll serve --livereload",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "jekyll serve"
+    "css:dev": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --watch",
+    "css:build": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --minify",    "dev": "npm-run-all --parallel css:dev jekyll:serve",
+    "build": "npm run css:build && bundle exec jekyll build"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,12 @@
     "jekyll": "^3.0.0-beta1"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.14"
+    "@tailwindcss/cli": "^4.1.14",
+    "@tailwindcss/postcss": "^4.1.14",
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.1.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.14"
   }
 }
