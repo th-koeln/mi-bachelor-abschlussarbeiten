@@ -1,0 +1,25 @@
+@theme {
+  --color-th-pink: #9313ce;
+  --color-th-purple: #be0f58;
+  --color-th-green: #00ad2f;
+  --color-th-blue: #4952e1;
+  --color-th-pink-light: #c084f5;
+  --color-th-purple-light: #e879a7;
+  --color-th-green-light: #4ade80;
+  --color-th-blue-light: #818cf8;
+
+  --font-sans: "IBMPlexSans", Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  @font-face {
+    font-family: 'IBMPlexSans';
+    src: url('/assets/fonts/IBM_Plex_Sans/IBMPlexSans-VariableFont_wdth\,wght.ttf') format('truetype-variations');
+    font-weight: 100 700;
+    font-style: normal;
+    font-display: swap;
+  }
+}
+
+
+@import "tailwindcss";
