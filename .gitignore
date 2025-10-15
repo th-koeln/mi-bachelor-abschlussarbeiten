@@ -135,4 +135,7 @@ _site/
 # MacOS
 .DS_Store
 
+# Tailwind CSS
+assets/css/output.css
+
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node,Jekyll,VisualStudioCode
