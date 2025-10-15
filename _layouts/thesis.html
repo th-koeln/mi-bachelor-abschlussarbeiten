@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="de" class="h-full">
+{% include head.html %}
+
+<body class="h-full bg-gray-50 dark:bg-gray-900 antialiased">
+  <!--
+    README: Thesis Detail Layout - konsistent mit theses-index.html
+    
+    Features implementiert:
+    - Konsistentes Header-Design mit TH Köln Branding
+    - Strukturierte Metadaten-Anzeige
+    - Responsive Layout mit Sidebar und Hauptinhalt
+    - TH Köln Farbschema (Pink, Purple, Blue, Green)
+    - Dark Mode Support
+    - Barrierefreiheit (ARIA, semantische Struktur)
+    - Back-to-Index Navigation
+    - Social Media & Repository Links
+    - Keywords als Tags
+    - Kooperationspartner-Integration
+  -->
+
+  <!-- Navigation in Top Left Corner -->
+  <nav class="absolute top-4 left-4 z-50" aria-label="Breadcrumb">
+    <a href="/" class="inline-flex items-center px-3 py-1 bg-white/70 backdrop-blur-sm border border-gray-300/50 rounded-md text-gray-700 hover:bg-gray-50 font-medium transition-all duration-200 shadow-lg">
+      <i class="fas fa-arrow-left text-xs mr-2"></i>
+      Zurück zur Übersicht
+    </a>
+  </nav>
+
+  <div class="min-h-full">
+    <!-- Hero Section with Background Image -->
+    <header class="relative {% if page.teaser_image_url %}min-h-screen{% else %}min-h-96{% endif %} flex items-center">
+      <!-- Background Image -->
+      {% if page.teaser_image_url %}
+      <div class="absolute inset-0">
+        <img 
+          src="{{ page.url | remove: '/index' }}{{ page.teaser_image_url }}" 
+          alt="Vorschaubild für {{ page.title }}"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        >
+        <!-- Dark overlay for better text readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/0 via-black/25 to-black/0"></div>
+      </div>
+      <!-- Fallback gradient background if image fails to load -->
+      <div class="absolute inset-0 {% if page.category == 'bachelor' %}bg-gradient-to-br from-th-blue to-th-blue/60 dark:from-th-blue/80 dark:to-th-blue/40{% else %}bg-gradient-to-br from-th-purple to-th-purple/60 dark:from-th-purple/80 dark:to-th-purple/40{% endif %}" style="display: none;"></div>
+      {% else %}
+      <!-- Fallback gradient background if no image -->
+      <div class="absolute inset-0 {% if page.category == 'bachelor' %}bg-gradient-to-br from-th-blue to-th-blue/60 dark:from-th-blue/80 dark:to-th-blue/40{% else %}bg-gradient-to-br from-th-purple to-th-purple/60 dark:from-th-purple/80 dark:to-th-purple/40{% endif %}"></div>
+      {% endif %}
+      
+      <!-- Content Container -->
+      <div class="relative z-10 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="py-20 lg:py-20">
+            
+            <!-- Title Section -->
+            <div class="max-w-4xl">
+              <!-- Category Badge -->
+              <div class="mb-4">
+                <span class="inline-flex items-center text-xl font-medium text-white drop-shadow-lg text-shadow-xl">
+                  {% if page.category == 'bachelor' %}Bachelorarbeit{% else %}Masterarbeit{% endif %} • {{ page.date | date: '%B %Y' }}
+                </span>
+              </div>
+              
+              <!-- Thesis Title -->
+              <h1 class="text-3xl lg:text-5xl font-bold text-white mb-4 leading-tight drop-shadow-xl text-shadow-md">
+                {{ page.title }}
+              </h1>
+              
+              <!-- Author -->
+              <p class="text-xl lg:text-3xl text-white/90 mb-10 drop-shadow-lg text-shadow-xl">
+                von <span class="font-semibold text-white">{{ page.firstname }} {{ page.lastname }}</span>
+              </p>
+              
+              <!-- Supervisors -->
+              <div class="text-xl text-white/80 space-y-2 drop-shadow-lg text-shadow-xl">
+                {% if page.first_supervisor %}
+                <p><span class="font-medium text-white">Erstbetreuer:in:</span> {{ page.first_supervisor }}</p>
+                {% endif %}
+                {% if page.second_supervisor %}
+                <p><span class="font-medium text-white">Zweitbetreuer:in:</span> {{ page.second_supervisor }}</p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Copyright for Image - positioned bottom left aligned with back button -->
+      {% if page.teaser_image_copyright %}
+      <div class="absolute bottom-4 left-4 z-20">
+        <div class="inline-block bg-black/20 backdrop-blur-sm px-3 py-2 rounded-md">
+          <p class="text-xs text-white font-medium">{{ page.teaser_image_copyright }}</p>
+        </div>
+      </div>
+      {% endif %}
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+        
+        <!-- Main Content Area -->
+        <div class="lg:col-span-2">
+          <!-- Thesis Content -->
+          <article class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg text-lg shadow-sm p-6 lg:p-8">
+            <div class="max-w-none leading-relaxed space-y-4">
+              {{ content }}
+            </div>
+          </article>
+        </div>
+
+        <!-- Sidebar with Metadata -->
+        <aside class="mt-8 lg:mt-0">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+            
+            <!-- Quick Actions -->
+            <div class="mb-8">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                Schnellzugriff
+              </h3>
+              <div class="space-y-3">
+                {% if page.thesis_url %}
+                <a href="{{ page.thesis_url }}" 
+                   class="flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-th-pink/10 hover:border-th-pink/30 transition-colors text-center justify-center">
+                  <i class="fas fa-file-pdf text-base mr-1"></i>
+                  Thesis herunterladen
+                </a>
+                {% endif %}
+                
+                {% if page.repository_url %}
+                <a href="{{ page.repository_url }}" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-th-pink/10 hover:border-th-pink/30 transition-colors text-center justify-center">
+                  <i class="fab fa-github text-base mr-2"></i>
+                  Repository
+                </a>
+                {% endif %}
+                
+                {% if page.project_url %}
+                <a href="{{ page.project_url }}" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-th-pink/10 hover:border-th-pink/30 transition-colors text-center justify-center">
+                  <i class="fas fa-external-link-alt text-base mr-2"></i>
+                  Live Demo
+                </a>
+                {% endif %}
+              </div>
+            </div>
+
+            <!-- Keywords -->
+            {% if page.keywords and page.keywords.size > 0 %}
+            <div class="mt-8 pb-8 border-b border-gray-200 dark:border-gray-700">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                Schlagworte
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {% for keyword in page.keywords %}
+                <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300">
+                  {{ keyword }}
+                </span>
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- Cooperation Partner -->
+            {% if page.cooperation_partner %}
+            <div class="mt-8 pb-8 border-b border-gray-200 dark:border-gray-700">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                Kooperationspartner
+              </h3>
+              {% if page.cooperation_partner_url %}
+              <a href="{{ page.cooperation_partner_url }}" 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 class="flex items-center text-gray-600 dark:text-gray-400 hover:text-th-pink transition-colors">
+                <span class="font-medium">{{ page.cooperation_partner }}</span>
+                <i class="fas fa-external-link-alt text-xs ml-1"></i>
+              </a>
+              {% else %}
+              <p class="font-medium text-gray-900 dark:text-gray-100">{{ page.cooperation_partner }}</p>
+              {% endif %}
+            </div>
+            {% endif %}
+
+            <!-- Contact & Social Media -->
+            {% if page.personal_website_url or page.personal_social_media_urls %}
+            <div class="mt-8 pb-8 border-b border-gray-200 dark:border-gray-700">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                Kontakt
+              </h3>
+              <div class="space-y-3">
+                {% if page.personal_website_url %}
+                <a href="{{ page.personal_website_url }}" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="flex items-center text-gray-600 dark:text-gray-400 hover:text-th-pink transition-colors">
+                  <i class="fas fa-globe text-base mr-2"></i>
+                  Website
+                </a>
+                {% endif %}
+                
+                {% if page.personal_social_media_urls %}
+                  {% for social_url in page.personal_social_media_urls %}
+                    {% assign domain = social_url | split: '/' | slice: 2 %}
+                    {% assign url_lower = social_url | downcase %}
+                    <a href="{{ social_url }}" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       title="{{ social_url }}"
+                       class="flex items-center text-gray-600 dark:text-gray-400 hover:text-th-pink transition-colors">
+                      
+                      {% if url_lower contains 'linkedin.com' %}
+                        <i class="fab fa-linkedin text-base mr-2"></i>
+                        LinkedIn
+                      {% elsif url_lower contains 'github.com' %}
+                        <i class="fab fa-github text-base mr-2"></i>
+                        GitHub
+                      {% elsif url_lower contains 'twitter.com' or url_lower contains 'x.com' %}
+                        {% if url_lower contains 'x.com' %}<i class="fab fa-x-twitter text-base mr-2"></i>{% else %}<i class="fab fa-twitter text-base mr-2"></i>{% endif %}
+                        {% if url_lower contains 'x.com' %}X (Twitter){% else %}Twitter{% endif %}
+                      {% elsif url_lower contains 'instagram.com' %}
+                        <i class="fab fa-instagram text-base mr-2"></i>
+                        Instagram
+                      {% elsif url_lower contains 'facebook.com' %}
+                        <i class="fab fa-facebook text-base mr-2"></i>
+                        Facebook
+                      {% elsif url_lower contains 'xing.com' %}
+                        <i class="fab fa-xing text-base mr-2"></i>
+                        XING
+                      {% elsif url_lower contains 'researchgate.net' %}
+                        <i class="fab fa-researchgate text-base mr-2"></i>
+                        ResearchGate
+                      {% elsif url_lower contains 'orcid.org' %}
+                        <i class="fab fa-orcid text-base mr-2"></i>
+                        ORCID
+                      {% elsif url_lower contains 'artstation.com' %}
+                        <i class="fab fa-artstation text-base mr-2"></i>
+                        ArtStation
+                      {% elsif url_lower contains 'soundcloud.com' %}
+                        <i class="fab fa-soundcloud text-base mr-2"></i>
+                        SoundCloud
+                      {% elsif url_lower contains 'youtube.com' %}
+                        <i class="fab fa-youtube text-base mr-2"></i>
+                        YouTube
+                      {% elsif url_lower contains 'behance.net' %}
+                        <i class="fab fa-behance text-base mr-2"></i>
+                        Behance
+                      {% elsif url_lower contains 'dribbble.com' %}
+                        <i class="fab fa-dribbble text-base mr-2"></i>
+                        Dribbble
+                      {% elsif url_lower contains 'vimeo.com' %}
+                        <i class="fab fa-vimeo text-base mr-2"></i>
+                        Vimeo
+                      {% elsif url_lower contains 'tiktok.com' %}
+                        <i class="fab fa-tiktok text-base mr-2"></i>
+                        TikTok
+                      {% elsif url_lower contains 'pinterest.com' %}
+                        <i class="fab fa-pinterest text-base mr-2"></i>
+                        Pinterest
+                      {% elsif url_lower contains 'reddit.com' %}
+                        <i class="fab fa-reddit text-base mr-2"></i>
+                        Reddit
+                      {% elsif url_lower contains 'medium.com' %}
+                        <i class="fab fa-medium text-base mr-2"></i>
+                        Medium
+                      {% elsif url_lower contains 'stackoverflow.com' %}
+                        <i class="fab fa-stack-overflow text-base mr-2"></i>
+                        Stack Overflow
+                      {% elsif url_lower contains 'codepen.io' %}
+                        <i class="fab fa-codepen text-base mr-2"></i>
+                        CodePen
+                      {% elsif url_lower contains 'figma.com' %}
+                        <i class="fab fa-figma text-base mr-2"></i>
+                        Figma
+                      {% elsif url_lower contains 'twitch.tv' %}
+                        <i class="fab fa-twitch text-base mr-2"></i>
+                        Twitch
+                      {% elsif url_lower contains 'discord' %}
+                        <i class="fab fa-discord text-base mr-2"></i>
+                        Discord
+                      {% elsif url_lower contains 'telegram' %}
+                        <i class="fab fa-telegram text-base mr-2"></i>
+                        Telegram
+                      {% elsif url_lower contains 'whatsapp' %}
+                        <i class="fab fa-whatsapp text-base mr-2"></i>
+                        WhatsApp
+                      {% elsif url_lower contains 'spotify.com' %}
+                        <i class="fab fa-spotify text-base mr-2"></i>
+                        Spotify
+                      {% elsif url_lower contains 'wikipedia.org' %}
+                        <i class="fab fa-wikipedia-w text-base mr-2"></i>
+                        Wikipedia
+                      {% elsif url_lower contains 'mailto:' %}
+                        <i class="fas fa-envelope text-base mr-2"></i>
+                        E-Mail
+                      {% else %}
+                        <i class="fas fa-external-link-alt text-base mr-2"></i>
+                        Website
+                      {% endif %}
+                    </a>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+
+            <!-- Metadata -->
+            <div class="mt-8">
+              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+                Metadaten
+              </h3>
+              <dl class="space-y-2 text-sm">
+                <div>
+                  <dt class="font-medium text-gray-500 dark:text-gray-400">Abgabedatum:</dt>
+                  <dd class="text-gray-900 dark:text-gray-100">{{ page.date | date: '%d.%m.%Y' }}</dd>
+                </div>
+                <div>
+                  <dt class="font-medium text-gray-500 dark:text-gray-400">Kategorie:</dt>
+                  <dd class="text-gray-900 dark:text-gray-100">
+                    {% if page.category == 'bachelor' %}Bachelorarbeit{% else %}Masterarbeit{% endif %}
+                  </dd>
+                </div>
+                <div>
+                  <dt class="font-medium text-gray-500 dark:text-gray-400">Studiengang:</dt>
+                  <dd class="text-gray-900 dark:text-gray-100">Medieninformatik</dd>
+                </div>
+                <div>
+                  <dt class="font-medium text-gray-500 dark:text-gray-400">Hochschule:</dt>
+                  <dd class="text-gray-900 dark:text-gray-100">TH Köln, Campus Gummersbach</dd>
+                </div>
+              </dl>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  {% include footer.html %}
+</body>
+</html>

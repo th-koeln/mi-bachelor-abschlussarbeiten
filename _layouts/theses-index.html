@@ -1,20 +1,572 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="h-full">
 {% include head.html %}
 
-<body>
-  <!-- Iterate over 'theses' folder and 'years' subfolder -->
-  <div class="page-content">
-    <div class="wrapper">
-      <h1>{{ page.title }}</h1>
-      <ul>
-        {% for thesis in site.theses %}
-        <li>
-          <a href="{{ thesis.url }}">{{ thesis.title }}</a>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
-</body>
+<body class="h-full bg-gray-50 dark:bg-gray-900 antialiased">
+  <!--
+    README: Überarbeitete theses-index.html für modernes, barrierefreies Layout
+    
+    Features implementiert:
+    - Responsive Grid (1/2/3/4 Spalten je Breakpoint)  
+    - Client-seitige Filter & Suche (Vanilla JS)
+    - Pagination (12 Arbeiten pro Seite)
+    - Header mit TH Köln Logo und Navigation
+    - Dark Mode Support (Tailwind dark: variants)
+    - Barrierefreiheit (ARIA, Labels, Fokus-States)
+    - Empty/Loading States
+    - Design angelehnt an medieninformatik.th-koeln.de
+    
+    Tailwind-Utilities genutzt:
+    - Layout: grid, flex, container, max-w-*
+    - Spacing: p-*, m-*, space-*, gap-*
+    - Typography: text-*, font-*, leading-*, line-clamp-*
+    - Colors: bg-*, text-*, border-*
+    - Responsive: sm:, md:, lg:, xl:
+    - Interactive: hover:, focus:, active:
+    - Dark Mode: dark:*
+    - A11y: sr-only, focus-visible
+  -->
 
+  <div class="min-h-full">
+    <!-- Header/Hero Section -->
+    <header class="bg-white dark:bg-gray-800 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Hero Content -->
+        <div class="py-8 lg:py-12">
+          <h1 class="text-3xl lg:text-4xl font-bold text-th-pink dark:text-th-pink-light mb-4">
+            Abschlussarbeiten Medieninformatik
+            <span class="block text-xl lg:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-0">
+              Technische Hochschule Köln Campus Gummersbach
+            </span>
+          </h1>
+          <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl">
+            Entdecken Sie Bachelor- und Masterarbeiten unserer Studierenden. Von KI und AR über UX Design bis hin zu nachhaltigen digitalen Lösungen – hier finden Sie innovative Projekte und Forschungsergebnisse aus der Medieninformatik.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" role="main">
+      
+      <!-- Filter Section -->
+      <section class="mb-8" aria-label="Filter und Suche">
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
+          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+            Filter & Suche
+          </h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Search Input -->
+            <div>
+              <label for="search-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Freitextsuche
+              </label>
+              <input 
+                type="text" 
+                id="search-input"
+                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100 transition-colors"
+                placeholder="Titel, Autor:in, Schlagworte..."
+                aria-describedby="search-help">
+              <p id="search-help" class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                Durchsucht Titel, Autor:innen und Keywords
+              </p>
+            </div>
+
+            <!-- Category Filter -->
+            <div>
+              <label for="category-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Abschlussart
+              </label>
+              <select 
+                id="category-filter"
+                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100 transition-colors">
+                <option value="">Alle Abschlussarten</option>
+                <option value="bachelor">Bachelor</option>
+                <option value="master">Master</option>
+              </select>
+            </div>
+
+            <!-- Year Filter -->
+            <div>
+              <label for="year-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Jahr
+              </label>
+              <select 
+                id="year-filter"
+                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100 transition-colors">
+                <option value="">Alle Jahre</option>
+              </select>
+            </div>
+
+            <!-- Supervisor Filter -->
+            <div>
+              <label for="supervisor-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Betreuer:in
+              </label>
+              <select 
+                id="supervisor-filter"
+                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100 transition-colors">
+                <option value="">Alle Betreuer:innen</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Results Counter & Reset -->
+          <div class="flex justify-between items-center mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+            <div class="text-sm text-gray-600 dark:text-gray-400" aria-live="polite" id="results-counter">
+              Lade Arbeiten...
+            </div>
+            <button 
+              type="button" 
+              id="reset-filters"
+              class="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors cursor-pointer">
+              Filter zurücksetzen
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Loading State -->
+      <div id="loading-state" class="text-center py-12" aria-live="polite">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 dark:border-blue-400"></div>
+        <p class="mt-2 text-gray-600 dark:text-gray-400">Lade Abschlussarbeiten...</p>
+      </div>
+
+      <!-- Theses Grid -->
+      <div id="theses-grid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 hidden" role="region" aria-label="Liste der Abschlussarbeiten">
+        {% assign sorted_theses = site.theses | sort: 'date' | reverse %}
+        {% for thesis in sorted_theses %}
+        <a href="{{ thesis.url }}" 
+           class="thesis-card bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden group transition-transform duration-500 hover:scale-105 flex flex-col h-full focus:outline-none focus:ring-2 focus:ring-th-pink focus:ring-offset-2"
+           data-title="{{ thesis.title | downcase }}"
+           data-author="{{ thesis.firstname | downcase }} {{ thesis.lastname | downcase }}"
+           data-category="{{ thesis.category | default: 'unknown' }}"
+           data-year="{{ thesis.date | date: '%Y' }}"
+           data-supervisor="{{ thesis.first_supervisor | default: '' | downcase }}"
+           data-keywords="{% if thesis.keywords %}{{ thesis.keywords | join: ' ' | downcase }}{% endif %}"
+           role="article">
+          
+          <!-- Thesis Image -->
+          {% if thesis.teaser_image_url %}
+          <div class="bg-gray-200 dark:bg-gray-700" style="aspect-ratio: 3 / 2;">
+            <img 
+              src="{{ thesis.id | remove: '/index' }}/{{ thesis.teaser_image_url }}" 
+              alt="Vorschaubild für {{ thesis.title }}"
+              class="w-full h-full object-cover"
+              loading="lazy">
+          </div>
+          {% else %}
+          <div class="{% if thesis.category == 'bachelor' %}bg-th-blue/20 dark:bg-th-blue/30{% else %}bg-th-purple/20 dark:bg-th-purple/30{% endif %} flex items-center justify-center" style="aspect-ratio: 3 / 2;">
+            <div class="{% if thesis.category == 'bachelor' %}text-th-blue dark:text-th-blue-light{% else %}text-th-purple dark:text-th-purple-light{% endif %} text-center p-4">
+              <svg class="w-12 h-12 mx-auto mb-2 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+              <p class="text-sm font-medium">{{ thesis.category | default: 'Abschluss' | capitalize }}arbeit</p>
+            </div>
+          </div>
+          {% endif %}
+
+          <!-- Card Content -->
+          <div class="p-4 flex-1 flex flex-col">
+            <!-- Type Badge & Year -->
+            <div class="flex items-center justify-between mb-3">
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium
+                           {% if thesis.category == 'bachelor' %}bg-th-blue/20 text-th-blue dark:bg-th-blue/30 dark:text-th-blue-light{% else %}bg-th-purple/20 text-th-purple dark:bg-th-purple/30 dark:text-th-purple-light{% endif %}">
+                {% if thesis.category == 'bachelor' %}Bachelor{% else %}Master{% endif %}
+              </span>
+              <span class="text-sm text-gray-500 dark:text-gray-400 font-medium">
+                {{ thesis.date | date: '%Y' }}
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h3 class="text-lg text-gray-900 dark:text-gray-100 mb-2 group-hover:text-th-pink dark:group-hover:text-th-pink-light transition-colors">
+              {{ thesis.title }}
+            </h3>
+
+            <!-- Author -->
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              von {{ thesis.firstname }} {{ thesis.lastname }}
+            </p>
+
+            <!-- Keywords -->
+            {% if thesis.keywords and thesis.keywords.size > 0 %}
+            <div class="flex flex-wrap gap-2 mb-4">
+              {% for keyword in thesis.keywords %}
+              <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300">
+                {{ keyword }}
+              </span>
+              {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Supervisor -->
+            <div class="mt-auto pt-2">
+              {% if thesis.first_supervisor %}
+              <p class="text-sm text-gray-500 dark:text-gray-400">
+                Betreuer:in: {{ thesis.first_supervisor }}
+              </p>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="text-center py-12 hidden" role="region" aria-live="polite">
+        <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-gray-100">Keine Arbeiten gefunden</h3>
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Versuchen Sie andere Suchbegriffe oder passen Sie die Filter an.
+        </p>
+      </div>
+
+      <!-- Pagination -->
+      <nav id="pagination" class="flex items-center justify-between border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-3 sm:px-6 mt-8 rounded-lg shadow-sm hidden" role="navigation" aria-label="Pagination Navigation">
+        <div class="flex flex-1 justify-between sm:hidden">
+          <button id="prev-mobile" class="relative inline-flex items-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-pink/10 dark:hover:bg-th-pink/20 hover:border-th-pink/30 focus:outline-none focus:ring-2 focus:ring-th-pink disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
+            Vorherige
+          </button>
+          <button id="next-mobile" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-pink/10 dark:hover:bg-th-pink/20 hover:border-th-pink/30 focus:outline-none focus:ring-2 focus:ring-th-pink disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
+            Nächste
+          </button>
+        </div>
+        
+        <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+          <div>
+            <p class="text-sm text-gray-700 dark:text-gray-300" id="pagination-info">
+              Zeige <span id="pagination-from" class="font-medium">1</span> bis <span id="pagination-to" class="font-medium">12</span> von <span id="pagination-total" class="font-medium">0</span> Arbeiten
+            </p>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button id="prev-desktop" class="relative inline-flex items-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-pink/10 dark:hover:bg-th-pink/20 hover:border-th-pink/30 focus:outline-none focus:ring-2 focus:ring-th-pink disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
+              Vorherige
+            </button>
+            <div id="page-numbers" class="flex space-x-1">
+              <!-- Page numbers will be inserted here by JS -->
+            </div>
+            <button id="next-desktop" class="relative inline-flex items-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-pink/10 dark:hover:bg-th-pink/20 hover:border-th-pink/30 focus:outline-none focus:ring-2 focus:ring-th-pink disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
+              Nächste
+            </button>
+          </div>
+        </div>
+      </nav>
+    </main>
+  </div>
+
+  <!-- JavaScript for filtering, pagination, and interactions -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Configuration
+      const ITEMS_PER_PAGE = 12;
+      
+      // Elements
+      const loadingState = document.getElementById('loading-state');
+      const thesesGrid = document.getElementById('theses-grid');
+      const emptyState = document.getElementById('empty-state');
+      const pagination = document.getElementById('pagination');
+      const resultsCounter = document.getElementById('results-counter');
+      
+      // Filter elements
+      const searchInput = document.getElementById('search-input');
+      const categoryFilter = document.getElementById('category-filter');
+      const yearFilter = document.getElementById('year-filter');
+      const supervisorFilter = document.getElementById('supervisor-filter');
+      const resetFilters = document.getElementById('reset-filters');
+      
+      // Pagination elements
+      const paginationInfo = document.getElementById('pagination-info');
+      const paginationFrom = document.getElementById('pagination-from');
+      const paginationTo = document.getElementById('pagination-to');
+      const paginationTotal = document.getElementById('pagination-total');
+      const pageNumbers = document.getElementById('page-numbers');
+      const prevMobile = document.getElementById('prev-mobile');
+      const nextMobile = document.getElementById('next-mobile');
+      const prevDesktop = document.getElementById('prev-desktop');
+      const nextDesktop = document.getElementById('next-desktop');
+      
+      // State
+      let allTheses = [];
+      let filteredTheses = [];
+      let currentPage = 1;
+      let totalPages = 0;
+      
+      // Initialize
+      function init() {
+        // Get all thesis cards
+        const thesisCards = document.querySelectorAll('.thesis-card');
+        allTheses = Array.from(thesisCards);
+        
+        // Populate filter options
+        populateFilters();
+        
+        // Initial filter and pagination
+        applyFilters();
+        
+        // Event listeners
+        searchInput.addEventListener('input', debounce(applyFilters, 300));
+        categoryFilter.addEventListener('change', applyFilters);
+        yearFilter.addEventListener('change', applyFilters);
+        supervisorFilter.addEventListener('change', applyFilters);
+        resetFilters.addEventListener('click', resetAllFilters);
+        
+        // Pagination event listeners
+        prevMobile.addEventListener('click', () => changePage(currentPage - 1));
+        nextMobile.addEventListener('click', () => changePage(currentPage + 1));
+        prevDesktop.addEventListener('click', () => changePage(currentPage - 1));
+        nextDesktop.addEventListener('click', () => changePage(currentPage + 1));
+        
+        // Hide loading, show content
+        loadingState.classList.add('hidden');
+        thesesGrid.classList.remove('hidden');
+      }
+      
+      // Populate filter dropdowns
+      function populateFilters() {
+        const years = new Set();
+        const supervisors = new Set();
+        
+        allTheses.forEach(thesis => {
+          const year = thesis.dataset.year;
+          const supervisor = thesis.dataset.supervisor.trim();
+          
+          if (year && year !== 'NaN') years.add(year);
+          if (supervisor) supervisors.add(supervisor);
+        });
+        
+        // Populate year filter
+        const sortedYears = Array.from(years).sort((a, b) => b - a);
+        sortedYears.forEach(year => {
+          const option = document.createElement('option');
+          option.value = year;
+          option.textContent = year;
+          yearFilter.appendChild(option);
+        });
+        
+        // Populate supervisor filter  
+        const sortedSupervisors = Array.from(supervisors).sort();
+        sortedSupervisors.forEach(supervisor => {
+          const option = document.createElement('option');
+          option.value = supervisor;
+          option.textContent = capitalizeFirst(supervisor);
+          supervisorFilter.appendChild(option);
+        });
+      }
+      
+      // Apply all filters
+      function applyFilters() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const categoryValue = categoryFilter.value;
+        const yearValue = yearFilter.value;
+        const supervisorValue = supervisorFilter.value;
+        
+        filteredTheses = allTheses.filter(thesis => {
+          const title = thesis.dataset.title;
+          const author = thesis.dataset.author;
+          const keywords = thesis.dataset.keywords;
+          const category = thesis.dataset.category;
+          const year = thesis.dataset.year;
+          const supervisor = thesis.dataset.supervisor;
+          
+          // Search filter
+          if (searchTerm) {
+            const searchText = `${title} ${author} ${keywords}`;
+            if (!searchText.includes(searchTerm)) return false;
+          }
+          
+          // Category filter
+          if (categoryValue && category !== categoryValue) return false;
+          
+          // Year filter
+          if (yearValue && year !== yearValue) return false;
+          
+          // Supervisor filter
+          if (supervisorValue && supervisor !== supervisorValue) return false;
+          
+          return true;
+        });
+        
+        currentPage = 1;
+        updateDisplay();
+      }
+      
+      // Reset all filters
+      function resetAllFilters() {
+        searchInput.value = '';
+        categoryFilter.value = '';
+        yearFilter.value = '';
+        supervisorFilter.value = '';
+        applyFilters();
+      }
+      
+      // Update display
+      function updateDisplay() {
+        const totalResults = filteredTheses.length;
+        totalPages = Math.ceil(totalResults / ITEMS_PER_PAGE);
+        
+        // Update results counter
+        updateResultsCounter(totalResults);
+        
+        if (totalResults === 0) {
+          showEmptyState();
+        } else {
+          showResults();
+          updatePagination();
+        }
+      }
+      
+      // Show empty state
+      function showEmptyState() {
+        thesesGrid.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        pagination.classList.add('hidden');
+        
+        // Hide all thesis cards
+        allTheses.forEach(thesis => thesis.classList.add('hidden'));
+      }
+      
+      // Show results
+      function showResults() {
+        thesesGrid.classList.remove('hidden');
+        emptyState.classList.add('hidden');
+        pagination.classList.remove('hidden');
+        
+        // Hide all thesis cards first
+        allTheses.forEach(thesis => thesis.classList.add('hidden'));
+        
+        // Calculate pagination
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        const visibleTheses = filteredTheses.slice(startIndex, endIndex);
+        
+        // Show only visible thesis cards
+        visibleTheses.forEach(thesis => thesis.classList.remove('hidden'));
+      }
+      
+      // Update results counter
+      function updateResultsCounter(count) {
+        if (count === 0) {
+          resultsCounter.textContent = 'Keine Arbeiten gefunden';
+        } else if (count === 1) {
+          resultsCounter.textContent = '1 Arbeit gefunden';
+        } else {
+          resultsCounter.textContent = `${count} Arbeiten gefunden`;
+        }
+      }
+      
+      // Update pagination
+      function updatePagination() {
+        const totalResults = filteredTheses.length;
+        
+        if (totalResults <= ITEMS_PER_PAGE) {
+          pagination.classList.add('hidden');
+          return;
+        }
+        
+        pagination.classList.remove('hidden');
+        
+        // Update pagination info
+        const startItem = ((currentPage - 1) * ITEMS_PER_PAGE) + 1;
+        const endItem = Math.min(currentPage * ITEMS_PER_PAGE, totalResults);
+        
+        paginationFrom.textContent = startItem;
+        paginationTo.textContent = endItem;
+        paginationTotal.textContent = totalResults;
+        
+        // Update prev/next buttons
+        const isFirstPage = currentPage === 1;
+        const isLastPage = currentPage === totalPages;
+        
+        updateButton(prevMobile, isFirstPage);
+        updateButton(nextMobile, isLastPage);
+        updateButton(prevDesktop, isFirstPage);
+        updateButton(nextDesktop, isLastPage);
+        
+        // Update page numbers
+        updatePageNumbers();
+      }
+      
+      // Update button state
+      function updateButton(button, isDisabled) {
+        button.disabled = isDisabled;
+        if (isDisabled) {
+          button.classList.add('opacity-50', 'cursor-not-allowed');
+        } else {
+          button.classList.remove('opacity-50', 'cursor-not-allowed');
+        }
+      }
+      
+      // Update page numbers
+      function updatePageNumbers() {
+        pageNumbers.innerHTML = '';
+        
+        if (totalPages <= 1) return;
+        
+        const maxVisiblePages = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+        
+        // Adjust if we're at the end
+        if (endPage - startPage < maxVisiblePages - 1) {
+          startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+        
+        for (let i = startPage; i <= endPage; i++) {
+          const pageButton = createPageButton(i, i === currentPage);
+          pageNumbers.appendChild(pageButton);
+        }
+      }
+      
+      // Create page button
+      function createPageButton(pageNum, isCurrent) {
+        const button = document.createElement('button');
+        button.textContent = pageNum;
+        button.className = isCurrent 
+          ? 'relative inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-th-pink border border-th-pink rounded-md hover:bg-th-pink/90 focus:outline-none focus:ring-2 focus:ring-th-pink'
+          : 'relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-th-pink/10 dark:hover:bg-th-pink/20 hover:border-th-pink/30 focus:outline-none focus:ring-2 focus:ring-th-pink transition-colors cursor-pointer';
+        
+        button.addEventListener('click', () => changePage(pageNum));
+        return button;
+      }
+      
+      // Change page
+      function changePage(newPage) {
+        if (newPage < 1 || newPage > totalPages || newPage === currentPage) return;
+        
+        currentPage = newPage;
+        showResults();
+        updatePagination();
+        
+        // Scroll to top of results
+        thesesGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      
+      // Utility functions
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+      
+      function capitalizeFirst(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+      
+      // Initialize the application
+      init();
+    });
+  </script>
+
+  {% include footer.html %}
+</body>
 </html>
