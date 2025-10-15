@@ -7,7 +7,8 @@
     "jekyll:serve": "bundle exec jekyll serve --livereload",
     "test": "echo \"Error: no test specified\" && exit 1",
     "css:dev": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --watch",
-    "css:build": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --minify",    "dev": "npm-run-all --parallel css:dev jekyll:serve",
+    "css:build": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --minify",
+    "dev": "npm-run-all --parallel css:dev jekyll:serve",
     "build": "npm run css:build && bundle exec jekyll build"
   },
   "repository": {
