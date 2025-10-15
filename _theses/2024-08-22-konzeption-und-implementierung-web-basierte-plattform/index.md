@@ -1,4 +1,5 @@
 ---
+layout: thesis
 firstname: Sebastian
 lastname: Brock
 title: Konzeption und Implementierung einer web-basierten Plattform zur musikalischen Echtzeit-Kollaboration an Modular-Synthesizern
@@ -6,7 +7,23 @@ category: master
 date: 22-08-2024
 first_supervisor: Prof. Dr. Theresa Schmiedel
 second_supervisor: Dr. Harald Nitz
-
+thesis_url: "thesis_sebastian_brock.pdf"
+keywords:
+  - "Web Audio API"
+  - "Real-time Collaboration"
+  - "Modular Synthesis"
+  - "WebRTC"
+  - "Music Technology"
+  - "Latency Optimization"
+cooperation_partner: "Ableton AG"
+cooperation_partner_url: "https://www.ableton.com/"
+repository_url: "https://github.com/sebastianbrock/modular-web-collab"
+project_url: "https://modular-collab-platform.io"
+personal_website_url: "https://sebastian-brock-music.com"
+personal_social_media_urls: 
+  - "https://www.linkedin.com/in/sebastian-brock-music"
+  - "https://github.com/sebastianbrock"
+  - "https://soundcloud.com/sebastianbrock"
 ---
 ## Abstract
 

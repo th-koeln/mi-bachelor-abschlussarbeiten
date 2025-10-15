@@ -1,4 +1,5 @@
 ---
+layout: thesis
 firstname: "Jonas"
 lastname: "Weber"
 title: "Gamification im Bildungswesen: Ein Werkzeug zur Steigerung der Lernmotivation"
@@ -6,6 +7,23 @@ category: "bachelor"
 date: 10-08-2024
 first_supervisor: "Prof. Dr. Thomas Riechert"
 second_supervisor: "Dr. Harald Nitz"
+thesis_url: "thesis_jonas_weber.pdf"
+keywords:
+  - "Gamification"
+  - "E-Learning"
+  - "Learning Analytics"
+  - "User Experience"
+  - "Educational Technology"
+  - "Motivation Psychology"
+cooperation_partner: "Cornelsen Verlag GmbH"
+cooperation_partner_url: "https://www.cornelsen.de/"
+repository_url: "https://github.com/jonasweber/gamification-education"
+project_url: "https://gamify-learn.cornelsen.de"
+personal_website_url: "https://jonas-weber-ux.de"
+personal_social_media_urls: 
+  - "https://www.linkedin.com/in/jonas-weber-ux"
+  - "https://www.xing.com/profile/Jonas_Weber_UX"
+  - "https://github.com/jonasweber"
 ---
 
 Gamification, also der Einsatz spielerischer Elemente in nicht-spielerischen Kontexten, gewinnt zunehmend an Bedeutung, insbesondere im Bildungsbereich. Die Bachelorarbeit "Gamification im Bildungswesen: Ein Werkzeug zur Steigerung der Lernmotivation" untersucht, wie Gamification-Ansätze in Schulen und Hochschulen eingesetzt werden können, um die Motivation der Lernenden zu steigern.
