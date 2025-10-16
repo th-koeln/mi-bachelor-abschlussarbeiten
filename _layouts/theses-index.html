@@ -2,7 +2,7 @@
 <html lang="de" class="h-full">
 {% include head.html %}
 
-<body class="h-full bg-gray-50 dark:bg-gray-900 antialiased">
+<body class="h-full dark:bg-gray-900 antialiased">
   <!--
     README: Überarbeitete theses-index.html für modernes, barrierefreies Layout
     
@@ -29,17 +29,17 @@
 
   <div class="min-h-full">
     <!-- Header/Hero Section -->
-    <header class="bg-white dark:bg-gray-800 shadow-sm">
+    <header class="bg-white dark:bg-black">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Hero Content -->
-        <div class="py-8 lg:py-12">
-          <h1 class="text-3xl lg:text-4xl font-bold text-th-pink dark:text-th-pink-light mb-4">
+        <div class="py-10 lg:py-14 border-b-3 border-th-green">
+          <h1 class="text-5xl lg:text-6xl font-bold text-th-pink dark:text-th-pink-light mb-10">
             Abschlussarbeiten Medieninformatik
-            <span class="block text-xl lg:text-2xl font-medium text-gray-600 dark:text-gray-400 mt-0">
+            <span class="block text-3xl lg:text-4xl font-medium text-black dark:text-white mt-2">
               Technische Hochschule Köln Campus Gummersbach
             </span>
           </h1>
-          <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl">
+          <p class="lg:text-3xl text-2xl text-black dark:text-white max-w-3xl leading-10">
             Entdecken Sie Bachelor- und Masterarbeiten unserer Studierenden. Von KI und AR über UX Design bis hin zu nachhaltigen digitalen Lösungen – hier finden Sie innovative Projekte und Forschungsergebnisse aus der Medieninformatik.
           </p>
         </div>
@@ -47,26 +47,26 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" role="main">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14" role="main">
       
       <!-- Filter Section -->
-      <section class="mb-8" aria-label="Filter und Suche">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4">
-          <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+      <section class="mb-14" aria-label="Filter und Suche">
+        <div class="bg-white dark:bg-black">
+          <h2 class="text-lg font-semibold text-th-pink dark:text-white mb-4">
             Filter & Suche
           </h2>
           
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <!-- Search Input -->
             <div>
-              <label for="search-input" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label for="search-input" class="block text-sm font-medium text-black dark:text-white mb-2">
                 Freitextsuche
               </label>
               <input 
                 type="text" 
                 id="search-input"
-                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100 transition-colors"
-                placeholder="Titel, Autor:in, Schlagworte..."
+                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-th-purple focus:border-th-purple dark:bg-gray-700 dark:text-gray-100 transition-colors"
+                placeholder="Titel, Autor:in, Keywords..."
                 aria-describedby="search-help">
               <p id="search-help" class="mt-1 text-xs text-gray-500 dark:text-gray-400">
                 Durchsucht Titel, Autor:innen und Keywords
@@ -75,12 +75,12 @@
 
             <!-- Category Filter -->
             <div>
-              <label for="category-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label for="category-filter" class="block text-sm font-medium text-black dark:text-white mb-2">
                 Abschlussart
               </label>
               <select 
                 id="category-filter"
-                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100 transition-colors">
+                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-th-purple focus:border-th-purple dark:bg-gray-700 dark:text-gray-100 transition-colors">
                 <option value="">Alle Abschlussarten</option>
                 <option value="bachelor">Bachelor</option>
                 <option value="master">Master</option>
@@ -89,38 +89,38 @@
 
             <!-- Year Filter -->
             <div>
-              <label for="year-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label for="year-filter" class="block text-sm font-medium text-black dark:text-white mb-2">
                 Jahr
               </label>
               <select 
                 id="year-filter"
-                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100 transition-colors">
+                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-th-purple focus:border-th-purple dark:bg-gray-700 dark:text-gray-100 transition-colors">
                 <option value="">Alle Jahre</option>
               </select>
             </div>
 
             <!-- Supervisor Filter -->
             <div>
-              <label for="supervisor-filter" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label for="supervisor-filter" class="block text-sm font-medium text-black dark:text-white mb-2">
                 Betreuer:in
               </label>
               <select 
                 id="supervisor-filter"
-                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-gray-100 transition-colors">
+                class="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-th-purple focus:border-th-purple dark:bg-gray-700 dark:text-gray-100 transition-colors">
                 <option value="">Alle Betreuer:innen</option>
               </select>
             </div>
           </div>
 
           <!-- Results Counter & Reset -->
-          <div class="flex justify-between items-center mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-            <div class="text-sm text-gray-600 dark:text-gray-400" aria-live="polite" id="results-counter">
+          <div class="flex justify-between items-center mt-8">
+            <div class="text-sm text-black dark:text-white" aria-live="polite" id="results-counter">
               Lade Arbeiten...
             </div>
             <button 
               type="button" 
               id="reset-filters"
-              class="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors cursor-pointer">
+              class="inline-flex items-center border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-purple/10 dark:hover:bg-th-purple/20 hover:border-th-purple/30 focus:outline-none focus:ring-2 focus:ring-th-purple transition-colors cursor-pointer">
               Filter zurücksetzen
             </button>
           </div>
@@ -138,7 +138,7 @@
         {% assign sorted_theses = site.theses | sort: 'date' | reverse %}
         {% for thesis in sorted_theses %}
         <a href="{{ thesis.url }}" 
-           class="thesis-card bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden group transition-transform duration-500 hover:scale-105 flex flex-col h-full focus:outline-none focus:ring-2 focus:ring-th-pink focus:ring-offset-2"
+           class="thesis-card bg-white dark:bg-gray-800 rounded-lg border border-gray-300 dark:border-gray-600 overflow-hidden group transition-transform duration-500 hover:scale-105 flex flex-col h-full focus:outline-none focus:ring-2 focus:ring-th-purple focus:ring-offset-2"
            data-title="{{ thesis.title | downcase }}"
            data-author="{{ thesis.firstname | downcase }} {{ thesis.lastname | downcase }}"
            data-category="{{ thesis.category | default: 'unknown' }}"
@@ -159,34 +159,32 @@
           {% else %}
           <div class="{% if thesis.category == 'bachelor' %}bg-th-blue/20 dark:bg-th-blue/30{% else %}bg-th-purple/20 dark:bg-th-purple/30{% endif %} flex items-center justify-center" style="aspect-ratio: 3 / 2;">
             <div class="{% if thesis.category == 'bachelor' %}text-th-blue dark:text-th-blue-light{% else %}text-th-purple dark:text-th-purple-light{% endif %} text-center p-4">
-              <svg class="w-12 h-12 mx-auto mb-2 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
+              <i class="fas fa-graduation-cap text-5xl mx-auto mb-2 opacity-75"></i>
               <p class="text-sm font-medium">{{ thesis.category | default: 'Abschluss' | capitalize }}arbeit</p>
             </div>
           </div>
           {% endif %}
 
           <!-- Card Content -->
-          <div class="p-4 flex-1 flex flex-col">
+          <div class="p-4 flex-1 flex flex-col text-black dark:text-white">
             <!-- Type Badge & Year -->
             <div class="flex items-center justify-between mb-3">
               <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium
                            {% if thesis.category == 'bachelor' %}bg-th-blue/20 text-th-blue dark:bg-th-blue/30 dark:text-th-blue-light{% else %}bg-th-purple/20 text-th-purple dark:bg-th-purple/30 dark:text-th-purple-light{% endif %}">
                 {% if thesis.category == 'bachelor' %}Bachelor{% else %}Master{% endif %}
               </span>
-              <span class="text-sm text-gray-500 dark:text-gray-400 font-medium">
+              <span class="text-sm font-medium">
                 {{ thesis.date | date: '%Y' }}
               </span>
             </div>
 
             <!-- Title -->
-            <h3 class="text-lg text-gray-900 dark:text-gray-100 mb-2 group-hover:text-th-pink dark:group-hover:text-th-pink-light transition-colors">
+            <h3 class="text-lg mb-2 group-hover:text-th-purple dark:group-hover:text-th-purple-light transition-colors">
               {{ thesis.title }}
             </h3>
 
             <!-- Author -->
-            <p class="text-sm text-gray-600 dark:text-gray-400 mb-3">
+            <p class="text-sm mb-3">
               von {{ thesis.firstname }} {{ thesis.lastname }}
             </p>
 
@@ -194,7 +192,7 @@
             {% if thesis.keywords and thesis.keywords.size > 0 %}
             <div class="flex flex-wrap gap-2 mb-4">
               {% for keyword in thesis.keywords %}
-              <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300">
+              <span class="inline-flex items-center px-2 py-1 rounded text-xs font-medium bg-gray-100">
                 {{ keyword }}
               </span>
               {% endfor %}
@@ -204,7 +202,7 @@
             <!-- Supervisor -->
             <div class="mt-auto pt-2">
               {% if thesis.first_supervisor %}
-              <p class="text-sm text-gray-500 dark:text-gray-400">
+              <p class="text-sm text-black dark:text-white">
                 Betreuer:in: {{ thesis.first_supervisor }}
               </p>
               {% endif %}
@@ -226,12 +224,12 @@
       </div>
 
       <!-- Pagination -->
-      <nav id="pagination" class="flex items-center justify-between border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-3 sm:px-6 mt-8 rounded-lg shadow-sm hidden" role="navigation" aria-label="Pagination Navigation">
+      <nav id="pagination" class="flex items-center justify-between bg-white dark:bg-gray-800 mt-14 hidden" role="navigation" aria-label="Pagination Navigation">
         <div class="flex flex-1 justify-between sm:hidden">
-          <button id="prev-mobile" class="relative inline-flex items-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-pink/10 dark:hover:bg-th-pink/20 hover:border-th-pink/30 focus:outline-none focus:ring-2 focus:ring-th-pink disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
+          <button id="prev-mobile" class="relative inline-flex items-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-purple/10 dark:hover:bg-th-purple/20 hover:border-th-purple/30 focus:outline-none focus:ring-2 focus:ring-th-purple disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:dark:hover:bg-gray-700 disabled:hover:border-gray-300 disabled:dark:hover:border-gray-600 cursor-pointer transition-colors">
             Vorherige
           </button>
-          <button id="next-mobile" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-pink/10 dark:hover:bg-th-pink/20 hover:border-th-pink/30 focus:outline-none focus:ring-2 focus:ring-th-pink disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
+          <button id="next-mobile" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-purple/10 dark:hover:bg-th-purple/20 hover:border-th-purple/30 focus:outline-none focus:ring-2 focus:ring-th-purple disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:dark:hover:bg-gray-700 disabled:hover:border-gray-300 disabled:dark:hover:border-gray-600 cursor-pointer transition-colors">
             Nächste
           </button>
         </div>
@@ -243,13 +241,13 @@
             </p>
           </div>
           <div class="flex items-center space-x-2">
-            <button id="prev-desktop" class="relative inline-flex items-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-pink/10 dark:hover:bg-th-pink/20 hover:border-th-pink/30 focus:outline-none focus:ring-2 focus:ring-th-pink disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
+            <button id="prev-desktop" class="relative inline-flex items-center border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-purple/10 dark:hover:bg-th-purple/20 hover:border-th-purple/30 focus:outline-none focus:ring-2 focus:ring-th-purple disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:dark:hover:bg-gray-700 disabled:hover:border-gray-300 disabled:dark:hover:border-gray-600 cursor-pointer transition-colors">
               Vorherige
             </button>
             <div id="page-numbers" class="flex space-x-1">
               <!-- Page numbers will be inserted here by JS -->
             </div>
-            <button id="next-desktop" class="relative inline-flex items-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-pink/10 dark:hover:bg-th-pink/20 hover:border-th-pink/30 focus:outline-none focus:ring-2 focus:ring-th-pink disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer transition-colors">
+            <button id="next-desktop" class="relative inline-flex items-center border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-purple/10 dark:hover:bg-th-purple/20 hover:border-th-purple/30 focus:outline-none focus:ring-2 focus:ring-th-purple disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white disabled:dark:hover:bg-gray-700 disabled:hover:border-gray-300 disabled:dark:hover:border-gray-600 cursor-pointer transition-colors">
               Nächste
             </button>
           </div>
@@ -493,11 +491,6 @@
       // Update button state
       function updateButton(button, isDisabled) {
         button.disabled = isDisabled;
-        if (isDisabled) {
-          button.classList.add('opacity-50', 'cursor-not-allowed');
-        } else {
-          button.classList.remove('opacity-50', 'cursor-not-allowed');
-        }
       }
       
       // Update page numbers
@@ -526,8 +519,8 @@
         const button = document.createElement('button');
         button.textContent = pageNum;
         button.className = isCurrent 
-          ? 'relative inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-th-pink border border-th-pink rounded-md hover:bg-th-pink/90 focus:outline-none focus:ring-2 focus:ring-th-pink'
-          : 'relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md hover:bg-th-pink/10 dark:hover:bg-th-pink/20 hover:border-th-pink/30 focus:outline-none focus:ring-2 focus:ring-th-pink transition-colors cursor-pointer';
+          ? 'relative inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-th-purple border border-th-purple hover:bg-th-purple/90 focus:outline-none focus:ring-2 focus:ring-th-purple'
+          : 'relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 hover:bg-th-purple/10 dark:hover:bg-th-purple/20 hover:border-th-purple/30 focus:outline-none focus:ring-2 focus:ring-th-purple transition-colors cursor-pointer';
         
         button.addEventListener('click', () => changePage(pageNum));
         return button;

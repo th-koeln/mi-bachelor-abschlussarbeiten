@@ -21,7 +21,7 @@
 
   <!-- Navigation in Top Left Corner -->
   <nav class="absolute top-4 left-4 z-50" aria-label="Breadcrumb">
-    <a href="/" class="inline-flex items-center px-3 py-1 bg-white/70 backdrop-blur-sm border border-gray-300/50 rounded-md text-gray-700 hover:bg-gray-50 font-medium transition-all duration-200 shadow-lg">
+    <a href="/" class="inline-flex items-center px-3 py-1 bg-white/70 backdrop-blur-sm border border-gray-300/50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 font-medium transition-all duration-200 shadow-lg">
       <i class="fas fa-arrow-left text-xs mr-2"></i>
       Zurück zur Übersicht
     </a>
@@ -117,13 +117,13 @@
             
             <!-- Quick Actions -->
             <div class="mb-8">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              <h3 class="text-lg font-semibold text-th-pink dark:text-th-pink-light mb-4">
                 Schnellzugriff
               </h3>
               <div class="space-y-3">
                 {% if page.thesis_url %}
                 <a href="{{ page.thesis_url }}" 
-                   class="flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-th-pink/10 hover:border-th-pink/30 transition-colors text-center justify-center">
+                   class="flex items-center border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-purple/10 dark:hover:bg-th-purple/20 hover:border-th-purple/30 focus:outline-none focus:ring-2 focus:ring-th-purple transition-colors cursor-pointer justify-center">
                   <i class="fas fa-file-pdf text-base mr-1"></i>
                   Thesis herunterladen
                 </a>
@@ -133,7 +133,7 @@
                 <a href="{{ page.repository_url }}" 
                    target="_blank" 
                    rel="noopener noreferrer"
-                   class="flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-th-pink/10 hover:border-th-pink/30 transition-colors text-center justify-center">
+                   class="flex items-center border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-purple/10 dark:hover:bg-th-purple/20 hover:border-th-purple/30 focus:outline-none focus:ring-2 focus:ring-th-purple transition-colors cursor-pointer justify-center">
                   <i class="fab fa-github text-base mr-2"></i>
                   Repository
                 </a>
@@ -143,7 +143,7 @@
                 <a href="{{ page.project_url }}" 
                    target="_blank" 
                    rel="noopener noreferrer"
-                   class="flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-md hover:bg-th-pink/10 hover:border-th-pink/30 transition-colors text-center justify-center">
+                   class="flex items-center border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-th-purple/10 dark:hover:bg-th-purple/20 hover:border-th-purple/30 focus:outline-none focus:ring-2 focus:ring-th-purple transition-colors cursor-pointer justify-center">
                   <i class="fas fa-external-link-alt text-base mr-2"></i>
                   Live Demo
                 </a>
@@ -154,7 +154,7 @@
             <!-- Keywords -->
             {% if page.keywords and page.keywords.size > 0 %}
             <div class="mt-8 pb-8 border-b border-gray-200 dark:border-gray-700">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              <h3 class="text-lg font-semibold text-th-pink dark:text-th-pink-light mb-4">
                 Schlagworte
               </h3>
               <div class="flex flex-wrap gap-2">
@@ -170,15 +170,15 @@
             <!-- Cooperation Partner -->
             {% if page.cooperation_partner %}
             <div class="mt-8 pb-8 border-b border-gray-200 dark:border-gray-700">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              <h3 class="text-lg font-semibold text-th-pink dark:text-th-pink-light mb-4">
                 Kooperationspartner
               </h3>
               {% if page.cooperation_partner_url %}
               <a href="{{ page.cooperation_partner_url }}" 
                  target="_blank" 
                  rel="noopener noreferrer"
-                 class="flex items-center text-gray-600 dark:text-gray-400 hover:text-th-pink transition-colors">
-                <span class="font-medium">{{ page.cooperation_partner }}</span>
+                 class="flex items-center text-gray-600 dark:text-gray-400 hover:text-th-purple transition-colors">
+                <span>{{ page.cooperation_partner }}</span>
                 <i class="fas fa-external-link-alt text-xs ml-1"></i>
               </a>
               {% else %}
@@ -190,7 +190,7 @@
             <!-- Contact & Social Media -->
             {% if page.personal_website_url or page.personal_social_media_urls %}
             <div class="mt-8 pb-8 border-b border-gray-200 dark:border-gray-700">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              <h3 class="text-lg font-semibold text-th-pink dark:text-th-pink-light mb-4">
                 Kontakt
               </h3>
               <div class="space-y-3">
@@ -198,7 +198,7 @@
                 <a href="{{ page.personal_website_url }}" 
                    target="_blank" 
                    rel="noopener noreferrer"
-                   class="flex items-center text-gray-600 dark:text-gray-400 hover:text-th-pink transition-colors">
+                   class="flex items-center text-gray-600 dark:text-gray-400 hover:text-th-purple transition-colors">
                   <i class="fas fa-globe text-base mr-2"></i>
                   Website
                 </a>
@@ -212,7 +212,7 @@
                        target="_blank" 
                        rel="noopener noreferrer"
                        title="{{ social_url }}"
-                       class="flex items-center text-gray-600 dark:text-gray-400 hover:text-th-pink transition-colors">
+                       class="flex items-center text-gray-600 dark:text-gray-400 hover:text-th-purple transition-colors">
                       
                       {% if url_lower contains 'linkedin.com' %}
                         <i class="fab fa-linkedin text-base mr-2"></i>
@@ -311,7 +311,7 @@
 
             <!-- Metadata -->
             <div class="mt-8">
-              <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">
+              <h3 class="text-lg font-semibold text-th-pink dark:text-th-pink-light mb-4">
                 Metadaten
               </h3>
               <dl class="space-y-2 text-sm">
