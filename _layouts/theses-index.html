@@ -143,7 +143,7 @@
            data-author="{{ thesis.firstname | downcase }} {{ thesis.lastname | downcase }}"
            data-category="{{ thesis.category | default: 'unknown' }}"
            data-year="{{ thesis.date | date: '%Y' }}"
-           data-supervisor="{{ thesis.first_supervisor | default: '' | downcase }}"
+           data-supervisor="{{ thesis.first_supervisor | default: '' }}"
            data-keywords="{% if thesis.keywords %}{{ thesis.keywords | join: ' ' | downcase }}{% endif %}"
            role="article">
           
@@ -350,7 +350,7 @@
         sortedSupervisors.forEach(supervisor => {
           const option = document.createElement('option');
           option.value = supervisor;
-          option.textContent = capitalizeFirst(supervisor);
+          option.textContent = supervisor;
           supervisorFilter.appendChild(option);
         });
       }
