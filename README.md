@@ -138,11 +138,11 @@ Kurze Zusammenfassung der Arbeit...
 
 ### 3. Dateien hinzufügen (optional)
 
-- **Vorschaubild**: `teaser.jpg` oder `teaser.png` (empfohlen 1920x1080px)
-- **PDF**: `thesis.pdf`
-- Weitere Bilder können im Text mit relativem Pfad eingebunden werden:
-  ```markdown
-  ![Beschreibung](bild.jpg)
+- **Vorschaubild**: `teaser.jpg` oder `teaser.png` 
+  - **Format**: JPEG (.jpg/.jpeg) oder PNG (.png), auch WebP (.webp) wird unterstützt
+  - **Auflösung**: 1920×1080px (16:9 Format) empfohlen
+  - **Dateigröße**: Maximal 500 KB für optimale Ladezeiten
+- **Ausarbeitung**: `thesis.pdf`
   ```
 
 ### 4. Testen und Committen
