@@ -157,20 +157,9 @@ git commit -m "Add thesis: Titel der Arbeit"
 git push
 ```
 
-## 🎨 Design-System
-
-Das Projekt verwendet das offizielle TH Köln Farbschema:
-
-- **Primary Pink**: `#E94190` (TH Köln Hauptfarbe)
-- **Purple**: `#9C27B0` (Master-Arbeiten)
-- **Blue**: `#00549F` (Bachelor-Arbeiten)
-- **Green**: `#57AB27` (Akzente)
-
-Tailwind CSS-Klassen sind im [tailwind.config.js](tailwind.config.js) definiert.
-
 ## 🌐 API-Endpunkte
 
-Die Website stellt JSON-APIs bereit:
+Die Plattform stellt folgende API-Endpunkte bereit:
 
 - `/bachelor.json` - Alle Bachelorarbeiten
 - `/master.json` - Alle Masterarbeiten
@@ -179,21 +168,6 @@ Die Website stellt JSON-APIs bereit:
 ## 📄 Lizenz
 
 MIT License - siehe [LICENSE](LICENSE) Datei
-
-## 👥 Autor
-
-Volker Schaefer - [GitHub](https://github.com/th-koeln)
-
-## 🤝 Beitragen
-
-Contributions sind willkommen! Bitte erstellen Sie einen Pull Request oder öffnen Sie ein Issue für Verbesserungsvorschläge.
-
-## 📞 Kontakt
-
-Bei Fragen wenden Sie sich bitte an:
-
-- **Issues**: https://github.com/th-koeln/mi-bachelor-abschlussarbeiten/issues
-- **TH Köln Medieninformatik**: https://www.th-koeln.de/
 
 ---
 
