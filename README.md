@@ -70,7 +70,7 @@ docker-compose up
    npm run jekyll:serve
    ```
 
-### Produktion Build
+### Production build
 
 ```bash
 # CSS kompilieren und Jekyll-Website bauen
