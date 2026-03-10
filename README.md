@@ -81,7 +81,23 @@ npm run build
 
 ## ✍️ Neue Abschlussarbeit hinzufügen
 
-### 1. Ordner erstellen
+### 1. Repository forken und klonen
+
+Erstellen Sie einen Fork des Repositories
+
+1. Öffnen Sie https://github.com/th-koeln/mi-bachelor-abschlussarbeiten
+2. Klicken Sie auf den **"Fork"**-Button oben rechts
+3. Klonen Sie Ihren Fork lokal:
+
+```bash
+git clone https://github.com/IHR-USERNAME/mi-bachelor-abschlussarbeiten.git
+cd mi-bachelor-abschlussarbeiten
+```
+
+**Workflow ohne GitHub-Account:**
+Falls Sie keinen GitHub-Account haben, können Sie den Ordner mit allen benötigten Dateien (siehe folgende Schritte) erstellen und per E-Mail an die betreuende Person Ihrer Abschlussarbeit senden. Diese wird die Veröffentlichung für Sie übernehmen.
+
+### 2. Ordner erstellen
 
 Erstellen Sie einen neuen Ordner in `_theses/` mit dem Format:
 
@@ -91,7 +107,7 @@ YYYY-MM-DD-titel-der-arbeit/
 
 Beispiel: `2024-03-15-ki-gestuetzte-bildanalyse/`
 
-### 2. Markdown-Datei anlegen
+### 3. Markdown-Datei anlegen
 
 Erstellen Sie eine `index.md` Datei im neuen Ordner:
 
@@ -136,26 +152,41 @@ Kurze Zusammenfassung der Arbeit...
 
 ```
 
-### 3. Dateien hinzufügen (optional)
+### 4. Dateien hinzufügen
 
-- **Vorschaubild**: `teaser.jpg` oder `teaser.png` 
-  - **Format**: JPEG (.jpg/.jpeg) oder PNG (.png), auch WebP (.webp) wird unterstützt
+- **Vorschaubild**:,
+  - **Format**: JPEG (.jpg/.jpeg), PNG (.png) oder WebP (.webp)
   - **Auflösung**: 1920×1080px (16:9 Format) empfohlen
-  - **Dateigröße**: Maximal 500 KB für optimale Ladezeiten
-- **Ausarbeitung**: `thesis.pdf`
-  ```
+  - **Dateigröße**: Maximal 300 KB für optimale Ladezeiten
+  - **Dateiname**: `teaser-image.jpg` (oder .png/.webp, entsprechend der `teaser_image_url` in der Markdown-Datei)
+- **Ausarbeitung**: `thesis_vorname-nachname_titel-der-arbeit.pdf` (PDF-Datei der Abschlussarbeit)
 
-### 4. Testen und Committen
+### 5. Testen
 
 ```bash
 # Lokal testen
 npm run dev
 
-# Änderungen committen
-git add _theses/2024-03-15-titel-der-arbeit/
-git commit -m "Add thesis: Titel der Arbeit"
-git push
+# Website öffnen über http://localhost:4000
 ```
+
+### 6. Pull Request erstellen (nur für GitHub-Nutzer)
+
+```bash
+# Änderungen committen
+git add _theses/2024-03-15_vorname-nachname/
+git commit -m "Add thesis: Titel der Arbeit"
+git push origin main
+```
+
+Anschließend:
+1. Öffnen Sie Ihren Fork auf GitHub
+2. Klicken Sie auf **"Contribute"** → **"Open Pull Request"**
+3. Beschreiben Sie kurz Ihre Änderungen
+4. Senden Sie den Pull Request ab
+
+**Alternative ohne GitHub-Account:**  
+Senden Sie den kompletten Ordner `2024-03-15_vorname-nachname` mit allen Dateien per E-Mail an die betreuenden Personen Ihrer Abschlussarbeit.
 
 ## 🌐 API-Endpunkte
 
@@ -169,6 +200,14 @@ Die Plattform stellt folgende API-Endpunkte bereit:
 
 MIT License - siehe [LICENSE](LICENSE) Datei
 
+## 📞 Kontakt
+
+Bei Fragen oder Anmerkungen wenden Sie sich bitte an  
+[Volker Schaefer](https://www.th-koeln.de/personen/volker.schaefer/)
+
+Bei Fehlern oder Verbesserungsvorschlägen können Sie auch gerne ein Issue auf GitHub erstellen:  
+- **Issues**: https://github.com/th-koeln/mi-bachelor-abschlussarbeiten/issues
+
 ---
 
-**TH Köln** | Campus Gummersbach | Medieninformatik Bachelor & Master
+[TH Köln Campus Gummersbach](https://www.th-koeln.de/hochschule/campus-gummersbach_76496.php) | [Medieninformatik Bachelor & Master](https://www.medieninformatik.th-koeln.de)
