@@ -205,7 +205,7 @@ MIT License - siehe [LICENSE](LICENSE) Datei
 Bei Fragen oder Anmerkungen wenden Sie sich bitte an  
 [Volker Schaefer](https://www.th-koeln.de/personen/volker.schaefer/)
 
-Bei Fehlern oder Verbesserungsvorschlägen können Sie auch gerne ein [Issue auf GitHub erstellen](https://github.com/th-koeln/mi-bachelor-abschlussarbeiten/issues).  
+Bei Fehlern oder Verbesserungsvorschlägen können Sie auch gerne ein [Issue auf GitHub erstellen]([https://github.com/th-koeln/mi-bachelor-abschlussarbeiten/issues](https://github.com/th-koeln/mi-bachelor-abschlussarbeiten/issues/new)).  
 
 ---
 
