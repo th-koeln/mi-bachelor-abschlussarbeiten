@@ -116,7 +116,7 @@ Erstellen Sie eine `index.md` Datei im neuen Ordner:
 layout: thesis
 title: "Titel der Abschlussarbeit"
 category: bachelor # oder "master"
-date: 2024-03-15
+date: 2024-03-15 (Abgabedatum der Arbeit)
 firstname: "Max"
 lastname: "Mustermann"
 first_supervisor: "Prof. Dr. Erstbetreuer"
@@ -126,10 +126,10 @@ second_supervisor: "Prof. Dr. Zweitbetreuer"
 teaser_image_url: "teaser.jpg"
 teaser_image_copyright: "Bildquelle / Copyright"
 thesis_url: "thesis.pdf"
-repository_url: "https://github.com/username/repo"
-project_url: "https://demo.example.com"
+repository_url: "https://github.com/username/repo" (optional)
+project_url: "https://demo.example.com" (optional)
 
-# Kontaktdaten
+# Kontaktdaten (optional)
 personal_website_url: "https://example.com"
 personal_social_media_urls:
   - "https://github.com/username"
@@ -141,7 +141,7 @@ keywords:
   - Computer Vision
   - Deep Learning
 
-# Kooperationspartner
+# Kooperationspartner (optional)
 cooperation_partner: "Firmenname GmbH"
 cooperation_partner_url: "https://firma.de"
 ---
