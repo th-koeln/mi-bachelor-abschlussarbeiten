@@ -20,60 +20,19 @@ cd mi-bachelor-abschlussarbeiten
 **Workflow ohne GitHub-Account:**
 Falls Sie keinen GitHub-Account haben, können Sie den Ordner mit allen benötigten Dateien (siehe folgende Schritte) erstellen und per E-Mail an die betreuende Person Ihrer Abschlussarbeit senden. Diese wird die Veröffentlichung für Sie übernehmen.
 
-### 2. Ordner erstellen
+### 2. Template-Ordner kopieren
 
-Erstellen Sie einen neuen Ordner in `_theses/` mit dem Format:
+Kopieren Sie den Template-Ordner `_theses/_template/` und benennen Sie ihn nach dem Format:
 
+```bash
+cp -r _theses/_template _theses/YYYY-MM-DD-titel-der-arbeit
 ```
-YYYY-MM-DD-titel-der-arbeit/
-```
 
-Beispiel: `2024-03-15-ki-gestuetzte-bildanalyse/`
+Beispiel: `_theses/2024-03-15-ki-gestuetzte-bildanalyse/`
 
-### 3. Markdown-Datei anlegen
+### 3. Markdown-Datei anpassen
 
-Erstellen Sie eine `index.md` Datei im neuen Ordner:
-
-```markdown
----
-layout: thesis
-title: "Titel der Abschlussarbeit"
-category: bachelor # oder "master"
-date: 2024-03-15 (Abgabedatum der Arbeit)
-firstname: "Max"
-lastname: "Mustermann"
-first_supervisor: "Prof. Dr. Erstbetreuer"
-second_supervisor: "Prof. Dr. Zweitbetreuer"
-
-# Bilder und Links
-teaser_image_url: "teaser.jpg"
-teaser_image_copyright: "Bildquelle / Copyright"
-thesis_url: "thesis.pdf"
-repository_url: "https://github.com/username/repo" (optional)
-project_url: "https://demo.example.com" (optional)
-
-# Kontaktdaten (optional)
-personal_website_url: "https://example.com"
-personal_social_media_urls:
-  - "https://github.com/username"
-  - "https://linkedin.com/in/username"
-
-# Keywords
-keywords:
-  - Machine Learning
-  - Computer Vision
-  - Deep Learning
-
-# Kooperationspartner (optional)
-cooperation_partner: "Firmenname GmbH"
-cooperation_partner_url: "https://firma.de"
----
-
-## Abstract
-
-Kurze Zusammenfassung der Arbeit...
-
-```
+Bearbeiten Sie die `index.md` im kopierten Ordner und ersetzen Sie die Platzhalter mit Ihren Daten. Eine vollständige Vorlage finden Sie in [`_theses/_template/index.md`](_theses/_template/index.md).
 
 ### 4. Dateien hinzufügen
 
