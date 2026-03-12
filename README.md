@@ -8,22 +8,16 @@ Diese Anleitung richtet sich an Studierende des Studiengangs Medieninformatik, d
 
 ```mermaid
 flowchart TD
-    A{GitHub-Account<br/>vorhanden?} --> |Ja| B[📦 Repository forken & klonen]
-    A -->|Nein| C[📋 Template-Ordner kopieren<br/>_theses/_template]
+    A{GitHub-Account<br/>vorhanden?} --> |Ja| B[📦 <b>Schritt 1</b><br/>Repository forken & klonen]
+    A -->|Nein| C[📋 <b>Schritt 2</b><br/>Template-Ordner kopieren<br/>_theses/_template]
     B --> C
-    C --> D[✏️ index.md anpassen<br/>Metadaten eintragen]
-    D --> E[📁 Dateien hinzufügen<br/>Teaser-Bild & PDF]
+    C --> D[✏️ <b>Schritt 3</b><br/>index.md anpassen<br/>Metadaten eintragen]
+    D --> E[📁 <b>Schritt 4</b><br/>Dateien hinzufügen<br/>Teaser-Bild & PDF]
     E --> F{GitHub-Account<br/>vorhanden?}
-    F -->|Ja| G[🔄 Pull Request erstellen<br/>auf GitHub]
+    F -->|Ja| G[🔄 <b>Schritt 5</b><br/>Pull Request erstellen<br/>auf GitHub]
     F -->|Nein| H[📧 Ordner per E-Mail<br/>an Betreuer senden]
     G --> I[✅ Veröffentlichung]
     H --> I
-    
-    click B "#1-repository-forken-und-klonen"
-    click C "#2-template-ordner-kopieren"
-    click D "#3-markdown-datei-anpassen"
-    click E "#4-dateien-hinzufügen"
-    click G "#5-pull-request-erstellen"
     
     style B fill:#e3f2fd
     style C fill:#e8f5e9
