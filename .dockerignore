@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+vendor/bundle/
+
+# Build outputs
+_site/
+.jekyll-cache/
+assets/css/output.css
+
+# Version control
+.git/
+.gitignore
+
+# Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+README.md
+DEVELOPER.md
+LICENSE
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

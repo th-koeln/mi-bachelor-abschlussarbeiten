@@ -4,7 +4,7 @@
   "description": "Abschlussarbeiten Medieninformatik Bachelor und Master",
   "main": "index.html",
   "scripts": {
-    "jekyll:serve": "bundle exec jekyll serve --livereload",
+    "jekyll:serve": "bundle exec jekyll serve --host 0.0.0.0 --livereload",
     "test": "echo \"Error: no test specified\" && exit 1",
     "css:dev": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --watch",
     "css:build": "npx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css --minify",
@@ -21,9 +21,6 @@
     "url": "https://github.com/th-koeln/mi-bachelor-abschlussarbeiten/issues"
   },
   "homepage": "https://github.com/th-koeln/mi-bachelor-abschlussarbeiten#readme",
-  "dependencies": {
-    "jekyll": "^3.0.0-beta1"
-  },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.14",
     "@tailwindcss/postcss": "^4.1.14",

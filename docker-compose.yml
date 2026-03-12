@@ -1,9 +1,21 @@
 services:
   jekyll:
-    image: jekyll/jekyll:4           # Verwende das Jekyll-Image direkt, anstelle von `build`
-    working_dir: /app                # Setzt das Arbeitsverzeichnis auf /app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mi-bachelor-abschlussarbeiten
     ports:
-      - "4000:4000"                  # Weiterleitung des Ports 4000
+      - "4000:4000"    # Jekyll Server
+      - "35729:35729"  # LiveReload
     volumes:
-      - .:/app                       # Synchronisation des aktuellen Verzeichnisses mit /app im Container
-    command: jekyll serve --host 0.0.0.0  # Startet den Jekyll-Server
+      # Mount Quellcode für Live-Entwicklung
+      - .:/app
+      # Exclude node_modules und Vendor für Performance
+      - /app/node_modules
+      - /app/vendor
+      - /app/.bundle
+    environment:
+      - JEKYLL_ENV=development
+      - NODE_ENV=development
+    command: npm run dev
+    tty: true
