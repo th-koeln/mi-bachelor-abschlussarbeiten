@@ -45,7 +45,7 @@ Bearbeiten Sie die `index.md` im kopierten Ordner und ersetzen Sie die Platzhalt
   - **Dateiname**: `teaser-image.jpg` (oder .png/.webp, entsprechend der `teaser_image_url` in der Markdown-Datei)
 - **Ausarbeitung**: `thesis_vorname-nachname_titel-der-arbeit.pdf` (PDF-Datei der Abschlussarbeit)
 
-### 5. Pull Request erstellen (nur für GitHub-Nutzer)
+### 5. Pull Request erstellen
 
 ```bash
 # Änderungen committen
