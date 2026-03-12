@@ -19,6 +19,12 @@ flowchart TD
     G --> I[✅ Veröffentlichung]
     H --> I
     
+    click B "#1-repository-forken-und-klonen"
+    click C "#2-template-ordner-kopieren"
+    click D "#3-markdown-datei-anpassen"
+    click E "#4-dateien-hinzufügen"
+    click G "#5-pull-request-erstellen"
+    
     style B fill:#e3f2fd
     style C fill:#e8f5e9
     style D fill:#fff3e0
