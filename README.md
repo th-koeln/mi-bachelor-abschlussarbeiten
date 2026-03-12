@@ -11,7 +11,7 @@ Diese Anleitung richtet sich an Studierende des Studiengangs Medieninformatik, d
 flowchart LR
     A[Repository forken & klonen<br/>wenn GitHub Account vorhanden] --> B[Template-Ordner<br/>kopieren]
     B --> C[index.md<br/>anpassen]
-    C --> D[Dateien<br/>hinzufügen]
+    C --> D[Bilder und Thesis<br/>hinzufügen]
     D --> E[Pull Request erstellen<br/>oder per E-Mail an Betreuer senden]
     E --> F[✅ Veröffentlichung]
     
