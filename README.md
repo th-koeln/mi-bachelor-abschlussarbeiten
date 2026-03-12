@@ -7,15 +7,16 @@ Diese Web-Plattform dient zur Präsentation von Bachelor- und Masterarbeiten des
 Diese Anleitung richtet sich an Studierende des Studiengangs Medieninformatik, die ihre Bachelor- oder Masterarbeit auf dieser Plattform veröffentlichen möchten. Folgen Sie den nachstehenden Schritten, um Ihre Arbeit einzureichen.
 
 ```mermaid
-flowchart TD
-    A{GitHub-Account<br/>vorhanden?} --> |Ja| B[Repository forken & klonen]
-    A -->|Nein| C[Template-Ordner kopieren<br/>_theses/_template]
+%%{init: {'theme':'base', 'themeVariables': { 'fontSize':'14px'}}}%%
+flowchart LR
+    A{GitHub-Account<br/>vorhanden?} --> |Ja| B[Repository forken<br/>& klonen]
+    A -->|Nein| C[Template-Ordner<br/>kopieren]
     B --> C
-    C --> D[index.md anpassen<br/>Metadaten eintragen]
-    D --> E[Dateien hinzufügen<br/>Teaser-Bild & PDF]
+    C --> D[index.md<br/>anpassen]
+    D --> E[Dateien<br/>hinzufügen]
     E --> F{GitHub-Account<br/>vorhanden?}
-    F -->|Ja| G[Pull Request erstellen<br/>auf GitHub]
-    F -->|Nein| H[Ordner per E-Mail<br/>an Betreuer senden]
+    F -->|Ja| G[Pull Request<br/>erstellen]
+    F -->|Nein| H[Per E-Mail<br/>senden]
     G --> I[✅ Veröffentlichung]
     H --> I
     
