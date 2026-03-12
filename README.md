@@ -2,7 +2,6 @@
 
 Diese Web-Plattform dient zur Präsentation von Bachelor- und Masterarbeiten des Studiengangs Medieninformatik an der TH Köln, Campus Gummersbach.
 
-
 ## ✍️ Neue Abschlussarbeit hinzufügen
 
 ### 1. Repository forken und klonen
@@ -40,7 +39,7 @@ Erstellen Sie eine `index.md` Datei im neuen Ordner:
 layout: thesis
 title: "Titel der Abschlussarbeit"
 category: bachelor # oder "master"
-date: 2024-03-15
+date: 2024-03-15 (Abgabedatum der Arbeit)
 firstname: "Max"
 lastname: "Mustermann"
 first_supervisor: "Prof. Dr. Erstbetreuer"
@@ -50,10 +49,10 @@ second_supervisor: "Prof. Dr. Zweitbetreuer"
 teaser_image_url: "teaser.jpg"
 teaser_image_copyright: "Bildquelle / Copyright"
 thesis_url: "thesis.pdf"
-repository_url: "https://github.com/username/repo"
-project_url: "https://demo.example.com"
+repository_url: "https://github.com/username/repo" (optional)
+project_url: "https://demo.example.com" (optional)
 
-# Kontaktdaten
+# Kontaktdaten (optional)
 personal_website_url: "https://example.com"
 personal_social_media_urls:
   - "https://github.com/username"
@@ -65,7 +64,7 @@ keywords:
   - Computer Vision
   - Deep Learning
 
-# Kooperationspartner
+# Kooperationspartner (optional)
 cooperation_partner: "Firmenname GmbH"
 cooperation_partner_url: "https://firma.de"
 ---
@@ -120,17 +119,16 @@ Eine ausführliche Anleitung zur Installation und Entwicklung finden Sie in der 
 
 Informationen zu den verfügbaren API-Endpunkten finden Sie in der [Developer Dokumentation](DEVELOPER.md#-api-endpunkte).
 
+
 ## 📄 Lizenz
 
 MIT License - siehe [LICENSE](LICENSE) Datei
 
 ## 📞 Kontakt
 
-Bei Fragen oder Anmerkungen wenden Sie sich bitte an  
-[Volker Schaefer](https://www.th-koeln.de/personen/volker.schaefer/)
+Bei Fragen oder Anmerkungen wenden Sie sich bitte an [Volker Schaefer](https://www.th-koeln.de/personen/volker.schaefer/).
 
-Bei Fehlern oder Verbesserungsvorschlägen können Sie auch gerne ein Issue auf GitHub erstellen:  
-- **Issues**: https://github.com/th-koeln/mi-bachelor-abschlussarbeiten/issues
+Bei Fehlern oder Verbesserungsvorschlägen können Sie auch gerne ein [Issue auf GitHub erstellen](https://github.com/th-koeln/mi-bachelor-abschlussarbeiten/issues/new).  
 
 ---
 
