@@ -8,7 +8,7 @@ Diese Anleitung richtet sich an Studierende des Studiengangs Medieninformatik, d
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'fontSize':'14px'}}}%%
-flowchart LR
+flowchart
     A{GitHub-Account<br/>vorhanden?} --> |Ja| B[Repository forken<br/>& klonen]
     A -->|Nein| C[Template-Ordner<br/>kopieren]
     B --> C
