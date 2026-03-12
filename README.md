@@ -4,6 +4,8 @@ Diese Web-Plattform dient zur Präsentation von Bachelor- und Masterarbeiten des
 
 ## ✍️ Neue Abschlussarbeit hinzufügen
 
+Diese Anleitung richtet sich an Studierende des Studiengangs Medieninformatik, die ihre Bachelor- oder Masterarbeit auf dieser Plattform veröffentlichen möchten. Folgen Sie den nachstehenden Schritten, um Ihre Arbeit einzureichen.
+
 ### 1. Repository forken und klonen
 
 Erstellen Sie einen Fork des Repositories
