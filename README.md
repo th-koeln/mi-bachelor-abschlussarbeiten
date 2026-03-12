@@ -9,18 +9,19 @@ Diese Anleitung richtet sich an Studierende des Studiengangs Medieninformatik, d
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': { 'fontSize':'14px'}}}%%
 flowchart LR
-    A[Repository forken<br/>& klonen<br/>wenn GitHub Account vorhanden --> B[Template-Ordner<br/>kopieren]
+    A[Repository forken & klonen<br/>wenn GitHub Account vorhanden] --> B[Template-Ordner<br/>kopieren und umbenennen]
     B --> C[index.md<br/>anpassen]
-    C --> D[Dateien<br/>hinzufügen]
+    C --> D[Bilder und Thesis<br/>hinzufügen]
     D --> E[Pull Request erstellen<br/>oder per E-Mail an Betreuer senden]
     E --> F[✅ Veröffentlichung]
-    
+
     style A fill:#e3f2fd
     style B fill:#e8f5e9
     style C fill:#fff3e0
     style D fill:#fce4ec
     style E fill:#f3e5f5
     style F fill:#c8e6c9
+
 ```
 
 ### 1. Repository forken und klonen
