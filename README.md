@@ -6,6 +6,27 @@ Diese Web-Plattform dient zur Präsentation von Bachelor- und Masterarbeiten des
 
 Diese Anleitung richtet sich an Studierende des Studiengangs Medieninformatik, die ihre Bachelor- oder Masterarbeit auf dieser Plattform veröffentlichen möchten. Folgen Sie den nachstehenden Schritten, um Ihre Arbeit einzureichen.
 
+```mermaid
+flowchart TD
+    A[📦 Repository forken & klonen] --> B{GitHub-Account<br/>vorhanden?}
+    B -->|Ja| C[📋 Template-Ordner kopieren<br/>_theses/_template]
+    B -->|Nein| C
+    C --> D[✏️ index.md anpassen<br/>Metadaten eintragen]
+    D --> E[📁 Dateien hinzufügen<br/>Teaser-Bild & PDF]
+    E --> F{GitHub-Account<br/>vorhanden?}
+    F -->|Ja| G[🔄 Pull Request erstellen<br/>auf GitHub]
+    F -->|Nein| H[📧 Ordner per E-Mail<br/>an Betreuer senden]
+    G --> I[✅ Veröffentlichung]
+    H --> I
+    
+    style A fill:#e3f2fd
+    style C fill:#e8f5e9
+    style D fill:#fff3e0
+    style E fill:#fce4ec
+    style G fill:#f3e5f5
+    style I fill:#c8e6c9
+```
+
 ### 1. Repository forken und klonen
 
 Erstellen Sie einen Fork des Repositories
