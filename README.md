@@ -34,7 +34,7 @@ Beispiel: `_theses/2024-03-15-ki-gestuetzte-bildanalyse/`
 
 ### 3. Markdown-Datei anpassen
 
-Bearbeiten Sie die `index.md` im kopierten Ordner und ersetzen Sie die Platzhalter mit Ihren Daten. Eine vollständige Vorlage finden Sie in [`_theses/_template/index.md`](_theses/_template/index.md).
+Bearbeiten Sie die `index.md` im kopierten Ordner und ersetzen Sie die Platzhalter mit Ihren Daten.
 
 ### 4. Dateien hinzufügen
 
